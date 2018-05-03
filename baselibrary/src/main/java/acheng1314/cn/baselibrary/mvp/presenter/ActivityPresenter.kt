@@ -26,9 +26,15 @@ abstract class ActivityPresenter<out T : VDelegate> : AppCompatActivity() {
         super.onResume()
         vd?.initView()
         vd?.initEvent()
+        doOtherThing()
     }
 
     abstract fun initViewD(): T
+
+    /**
+     * 界面绘制完成做点其他的事情
+     */
+    abstract fun doOtherThing()
 
     override fun onDestroy() {
         super.onDestroy()

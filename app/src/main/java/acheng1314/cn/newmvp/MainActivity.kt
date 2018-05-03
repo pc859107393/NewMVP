@@ -1,12 +1,14 @@
 package acheng1314.cn.newmvp
 
+import acheng1314.cn.baselibrary.mvp.presenter.ActivityPresenter
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ActivityPresenter<MainDelegate>() {
+    override fun doOtherThing() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
     }
+
+    override fun initViewD() = MainDelegate()
+
 }
