@@ -10,7 +10,7 @@ import android.view.ViewGroup
 /**
  * 视图层代理
  */
-@SuppressWarnings("unchecked")
+@Suppress("UNCHECKED_CAST")
 abstract class BaseDelegate : VDelegate {
     private var rootView: View? = null  //根布局
     private var intent: Intent? = null  //activity传递的数据
