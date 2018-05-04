@@ -1,5 +1,6 @@
 package acheng1314.cn.baselibrary.mvp.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.IdRes
@@ -16,6 +17,8 @@ abstract class BaseDelegate : VDelegate {
     private var intent: Intent? = null  //activity传递的数据
 
     private var views: HashMap<Int, View> = hashMapOf()
+
+    private lateinit var context: Context
 
     override fun onCreateRootView(inflater: LayoutInflater
                                   , container: ViewGroup?
@@ -45,5 +48,9 @@ abstract class BaseDelegate : VDelegate {
             views[id] = v!!
         }
         return views[id]!! as V
+    }
+
+    override fun notifyContext(context: Context) {
+        this.context = context
     }
 }

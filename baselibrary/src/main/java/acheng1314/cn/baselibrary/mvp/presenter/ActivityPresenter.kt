@@ -24,6 +24,7 @@ abstract class ActivityPresenter<out T : VDelegate> : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        vd?.notifyContext(this?:applicationContext)
         vd?.initView()
         vd?.initEvent()
         doOtherThing()

@@ -1,5 +1,6 @@
 package acheng1314.cn.baselibrary.mvp.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,4 +15,5 @@ interface VDelegate {
     fun postIntent(intent: Intent?)
     fun initEvent()
     fun initView()
+    fun notifyContext(context: Context)
 }
