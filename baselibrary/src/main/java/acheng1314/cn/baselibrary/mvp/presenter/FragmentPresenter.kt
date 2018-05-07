@@ -13,6 +13,7 @@ abstract class FragmentPresenter<out T : VDelegate> : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         vd = initViewD()
+        vd?.isFragment(true)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -23,6 +24,7 @@ abstract class FragmentPresenter<out T : VDelegate> : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         vd?.initView()
         vd?.initEvent()
+        doOtherThing()
     }
 
     override fun onDestroy() {
@@ -36,4 +38,6 @@ abstract class FragmentPresenter<out T : VDelegate> : Fragment() {
     }
 
     abstract fun initViewD(): T
+
+    abstract fun doOtherThing()
 }

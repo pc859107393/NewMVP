@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.IdRes
+import android.support.v4.app.FragmentManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +19,9 @@ abstract class BaseDelegate : VDelegate {
 
     private var views: HashMap<Int, View> = hashMapOf()
 
-    private lateinit var context: Context
+    lateinit var context: Context
+    private lateinit var supportFragmentManager: FragmentManager
+    private var isFragment: Boolean = false
 
     override fun onCreateRootView(inflater: LayoutInflater
                                   , container: ViewGroup?
@@ -52,5 +55,15 @@ abstract class BaseDelegate : VDelegate {
 
     override fun notifyContext(context: Context) {
         this.context = context
+    }
+
+    override fun notifySupportFragmentManager(supportFragmentManager: FragmentManager) {
+        this.supportFragmentManager = supportFragmentManager
+    }
+
+    override fun getSupportFragmentManager(): FragmentManager? = if (!isFragment) this.supportFragmentManager else null
+
+    override fun isFragment(value: Boolean) {
+        this.isFragment = value
     }
 }

@@ -20,11 +20,12 @@ abstract class ActivityPresenter<out T : VDelegate> : AppCompatActivity() {
         if (null == vd) throw RuntimeException("view delegate init failed！")
         vd?.postIntent(intent)
         setContentView(vd?.onCreateRootView(layoutInflater, null, savedInstanceState))
+        vd?.notifySupportFragmentManager(supportFragmentManager)
     }
 
     override fun onResume() {
         super.onResume()
-        vd?.notifyContext(this?:applicationContext)
+        vd?.notifyContext(this ?: applicationContext)
         vd?.initView()
         vd?.initEvent()
         doOtherThing()
