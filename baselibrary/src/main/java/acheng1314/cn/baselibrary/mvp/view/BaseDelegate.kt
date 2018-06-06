@@ -43,14 +43,16 @@ abstract class BaseDelegate : VDelegate {
      */
     @JvmOverloads
     fun <V : View> getView(@IdRes id: Int, parent: View? = null): V {
-        if (views[id] == null && parent == null) {
-            val v = rootView?.findViewById<V>(id)
-            views[id] = v!!
-        } else if (views[id] == null) {
-            val v = parent?.findViewById<V>(id)
-            views[id] = v!!
-        }
-        return views[id]!! as V
+        var v: V? = null
+        if (views[id] == null)
+            if (parent == null) {
+                v = rootView?.findViewById(id)
+                views[id] = v!!
+            } else {
+                v = parent.findViewById(id)
+                views[id] = v!!
+            }
+        return views[id] as V
     }
 
     override fun notifyContext(context: Context) {
